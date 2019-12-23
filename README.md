@@ -51,12 +51,19 @@ python vmmigration-agent.py
 1. 安装必要的工具  
    在管理机、源物理机、目的物理机上安装好ssh服务（ssh-server、ssh-client），scp命令，virsh命令
 
-2. 部署Agent  
+2. 定义合法的控制器IP地址  
+   在ControllerIPAddr.txt添加控制器IP地址
+
+3. 部署Agent  
    在源物理机、目的物理机上分别输入
 ```
 python3 vmmigration-agent.py
-``` 
-3. 部署Controller  
+```   
+
+4. 定义合法的代理IP地址  
+   在AgentIPAddr.txt添加代理IP地址
+   
+5. 部署Controller  
    在管理机上输入
 ```
 python vmmigration.py 192.168.111.130 192.168.111.132 kvm VM1 /var/lib/libvirt/images/node.qcow2 /etc/libvirt/qemu/VM1.xml
