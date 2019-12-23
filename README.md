@@ -1,9 +1,11 @@
 # VMMigration
  
 ## 简介
-基于Virsh实现虚拟机在两台物理机上进行在线迁移，实现了两条命令：vmmigration和vmmigration-agent
+基于Virsh实现虚拟机在两台物理机上进行在线迁移，实现了两条命令：vmmigration和vmmigration-agent  
 
-![VMMigration整体架构]("./vmmigration整体架构.png")
+<p align=center>
+  <img src="https://github.com/Chentingz/VMMigration/blob/master/imgs/vmmigration%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84.png" width = 75% height = 75%/>
+</p>  
 
 ## 术语
 - 代理：Agent，主要负责接收控制器发来的指令（封装在json格式的消息中），解析并在本地执行相关的命令，部署在需要迁移的源、目的物理机上
