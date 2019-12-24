@@ -62,12 +62,10 @@ python vmmigration-agent.py
 虚拟机      VM1         192.168.122.18      ubuntu-16.04.3-server
 管理机      BOSS        192.168.111.1       win7
 ```  
-
-步骤：
-1. 安装必要的工具  
+### 1. 安装必要的工具  
    在管理机、源物理机、目的物理机上安装好ssh服务（ssh-server、ssh-client），scp命令，virsh命令
 
-2. 配置存放虚拟机磁盘文件、配置文件的目录权限
+### 2. 配置存放虚拟机磁盘文件、配置文件的目录权限
 - 在源、目的物理机上配置存放虚拟机磁盘文件的目录权限
 ```
 chmod -R 777 /var/lib/libvirt
@@ -78,18 +76,18 @@ chmod -R 777 /var/lib/libvirt
 chmod -R 777 /etc/libvirt/qemu
 ```
 
-3. 定义合法的控制器、代理IP地址  
+### 3. 定义合法的控制器、代理IP地址  
 - 在ControllerIPAddr.txt添加控制器IP地址
 - 在AgentIPAddr.txt添加代理IP地址
 
-![定义合法控制器和代理IP地址]("")  
+![定义合法控制器和代理IP地址](https://github.com/Chentingz/VMMigration/blob/master/imgs/%E5%AE%9A%E4%B9%89%E5%90%88%E6%B3%95%E6%8E%A7%E5%88%B6%E5%99%A8%E5%92%8C%E4%BB%A3%E7%90%86IP%E5%9C%B0%E5%9D%80.png)  
 
-4. 验证源物理机上需要在线迁移的虚拟机正在运行
+### 4. 验证源物理机上需要在线迁移的虚拟机正在运行
 ```
 virt-manager
 ```
-  ![virt-manager验证源物理机上VM1正在运行]("")  
-  ![virt-manager验证目的物理机无虚拟机]("")
+  ![virt-manager验证源物理机上VM1正在运行](https://github.com/Chentingz/VMMigration/blob/master/imgs/virt-manager%E9%AA%8C%E8%AF%81%E6%BA%90%E7%89%A9%E7%90%86%E6%9C%BA%E4%B8%8AVM1%E6%AD%A3%E5%9C%A8%E8%BF%90%E8%A1%8C.png)  
+  ![virt-manager验证目的物理机无虚拟机](https://github.com/Chentingz/VMMigration/blob/master/imgs/virt-manager%E9%AA%8C%E8%AF%81%E7%9B%AE%E7%9A%84%E7%89%A9%E7%90%86%E6%9C%BA%E6%97%A0%E8%99%9A%E6%8B%9F%E6%9C%BA.png)
   
   或者使用  
    ```
@@ -98,28 +96,28 @@ virt-manager
 若显示虚拟机VM1处于"running"状态，说明正在运行
 
 
-5. 部署Agent，在源物理机、目的物理机上分别输入
+### 5. 部署Agent，在源物理机、目的物理机上分别输入
 ```
 python vmmigration-agent.py
 ```
 
-![源、目的物理机上使用vmmigration-agent命令]("")
+![源、目的物理机上使用vmmigration-agent命令](https://github.com/Chentingz/VMMigration/blob/master/imgs/%E6%BA%90%E3%80%81%E7%9B%AE%E7%9A%84%E7%89%A9%E7%90%86%E6%9C%BA%E4%B8%8A%E4%BD%BF%E7%94%A8vmmigration-agent%E5%91%BD%E4%BB%A4.png)
 
-6. 部署Controller，在管理机上输入
+### 6. 部署Controller，在管理机上输入
 ```
 python vmmigration.py 192.168.111.130 192.168.111.132 kvm VM1 /var/lib/libvirt/images/node.qcow2 /etc/libvirt/qemu/VM1.xml
 ```
-![管理机上输入vmmigration命令]("")
+![管理机上输入vmmigration命令](https://github.com/Chentingz/VMMigration/blob/master/imgs/%E7%AE%A1%E7%90%86%E6%9C%BA%E4%B8%8A%E8%BE%93%E5%85%A5vmmigration%E5%91%BD%E4%BB%A4.png)
 
-7. 查看迁移结果
+### 7. 查看迁移结果
 
 在源物理机上，可通过virt-manager看见VM1已经关闭
 
-![迁移成功_源物理机上VM1已关闭]("")
+![迁移成功_源物理机上VM1已关闭](https://github.com/Chentingz/VMMigration/blob/master/imgs/%E8%BF%81%E7%A7%BB%E6%88%90%E5%8A%9F_%E6%BA%90%E7%89%A9%E7%90%86%E6%9C%BA%E4%B8%8AVM1%E5%B7%B2%E5%85%B3%E9%97%AD.png)
 
 在目的物理机上，可通过virt-manager看见VM1已经运行
 
-![迁移成功_目的物理机上VM1已在运行]("")
+![迁移成功_目的物理机上VM1已在运行](https://github.com/Chentingz/VMMigration/blob/master/imgs/%E8%BF%81%E7%A7%BB%E6%88%90%E5%8A%9F_%E7%9B%AE%E7%9A%84%E7%89%A9%E7%90%86%E6%9C%BA%E4%B8%8AVM1%E5%B7%B2%E5%9C%A8%E8%BF%90%E8%A1%8C.png)
 
 ## 参考
 - [「虚拟化」基于virsh实现虚拟机动态迁移](https://chentingz.github.io/2019/12/11/%E3%80%8C%E8%99%9A%E6%8B%9F%E5%8C%96%E3%80%8D%E5%9F%BA%E4%BA%8Evirsh%E5%AE%9E%E7%8E%B0%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%8A%A8%E6%80%81%E8%BF%81%E7%A7%BB/#%E5%9F%BA%E4%BA%8E%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8)
