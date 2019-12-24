@@ -13,11 +13,14 @@ CMD_DEFINE_VIRTUAL_MACHINE = "DEFINE_VIRTUAL_MACHINE"
 PORT_CONTROLLER = 8001
 PORT_AGENT = 8002
 
+"""
+合法IP地址列表
+"""
 TXT_CONTROLLER_IP_ADDR = "./ControllerIPAddr.txt"
 TXT_AGENT_IP_ADDR = "./AgentIPAddr.txt"
 
-PATH_VM_CONFIGURE_FILE = "/etc/libvirt/qemu"
-PATH_VM_DISK_FILE = "/var/lib/libvirt/images"
+#PATH_VM_CONFIGURE_FILE = "/etc/libvirt/qemu"
+#PATH_VM_DISK_FILE = "/var/lib/libvirt/images"
 
 """
 请求消息定义
