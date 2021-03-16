@@ -1,7 +1,9 @@
 # VMMigration
  
 ## 简介
-针对[物理机采用本地存储](https://chentingz.github.io/2019/12/11/%E3%80%8C%E8%99%9A%E6%8B%9F%E5%8C%96%E3%80%8D%E5%9F%BA%E4%BA%8Evirsh%E5%AE%9E%E7%8E%B0%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%8A%A8%E6%80%81%E8%BF%81%E7%A7%BB/#%E5%9F%BA%E4%BA%8E%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8)的情况，基于virsh实现虚拟机在两台物理机之间在线迁移，实现了两条命令：vmmigration和vmmigration-agent
+VMMigration借助virsh实现管理主机上远程控制虚拟机在两台采用[本地存储方式的物理机](https://chentingz.github.io/2019/12/11/%E3%80%8C%E8%99%9A%E6%8B%9F%E5%8C%96%E3%80%8D%E5%9F%BA%E4%BA%8Evirsh%E5%AE%9E%E7%8E%B0%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%8A%A8%E6%80%81%E8%BF%81%E7%A7%BB/#%E5%9F%BA%E4%BA%8E%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8)上进行在线迁移的需求。
+
+VMMigration由vmmigration和vmmigration-agent两部分组成，分别用于部署在管理机和受控物理机上。
 
 <p align=center>
   <img src="https://github.com/Chentingz/VMMigration/blob/master/imgs/vmmigration%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84.png" width = 75% height = 75%/>
